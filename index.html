@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World countries data</title>
+    <style>
+        h1{
+            font-weight: 500;
+            font-style: italic;
+            color: rgb(240, 118, 4);
+            cursor:default;
+        }
+        h1 select{
+            font-size: 20px;
+            color:  rgb(240, 118, 4);
+            font-weight: 500;
+            border: none;
+            text-align: center;
+        }
+        .linear{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .link{
+            padding: 5px;
+            margin:5px 15px;
+            border: 2px solid black;
+            cursor: pointer;
+            transition:.5s;
+        }
+        .link:hover{
+            background-color: rgb(240, 118, 4);
+            transform: scaleX(1.1);
+        }
+        .link::after{
+            content: '';
+            width: 0;
+            height: 4px;
+            background-color: rgb(240, 118, 4);
+            position: absolute;
+            left: 0;
+            top: -10px;
+            transition: .5s;
+        }
+        .link:hover::after{
+            width: 100%;
+        }
+        .active{
+            background-color: orange;
+            color: white;
+            transform: scaleX(1.1);
+            
+        }
+        .hide{
+            display: none;
+        }
+        .holder{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3px;
+            margin: 5px
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <header>
+        <h1> <select name="select" id="select1">
+            <option value="Top">Top</option>
+            <option value="Bottom">Bottom</option>
+            </select> 
+            <select name="select" id="select2">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+            </select> Countries in the World</h1>
+        <div class="linear">
+            <h3 id="link1" class="link active" onclick="openTab('population')">According to Population</h3>
+            <h3 id="link2" class="link" onclick="openTab('area')">According to Area</h3>
+        </div>
+        <hr>
+    </header>
+
+    <div id="container">
+        <div class="holder">
+            <span style="font-size: 15px ; font-weight: 600; width: 10%;">SN</span>
+            <p style="font-size: 15px ; font-weight: 600; width: 30%;">Name of Country</p>
+            <p style="font-size: 15px ; font-weight: 600; width: 40%;">Graph</p>
+            <span style="font-size: 15px ; font-weight: 600; width: 20%;">Population</span>
+        </div>
+    </div>
+    <div id="displayArea" class="hide">
+        <div class="holder">
+            <span style="font-size: 15px ; font-weight: 600; width: 10%;">SN</span>
+            <p style="font-size: 15px ; font-weight: 600; width: 30%;">Name of Country</p>
+            <p style="font-size: 15px ; font-weight: 600; width: 40%;">Graph</p>
+            <span style="font-size: 15px ; font-weight: 600; width: 20%;">Area</span>
+        </div>
+    </div>
+    </center>
+
+    <script src="logic.js"></script>
+</body>
+</html>
