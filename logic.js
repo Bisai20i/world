@@ -1,3 +1,4 @@
+
 let select1 = document.getElementById('select1')
 
 let select2 = document.getElementById('select2')
@@ -12,31 +13,50 @@ const openTab=(tab)=>{
     }
     if(tab==='area')
     {
+        removeNode(container)
+        removeNode(displayArea)
         container.classList.add('hide')
         displayArea.classList.remove('hide')
+        document.getElementById('populationHolder').classList.add('hide')
+        document.getElementById('areaHolder').classList.remove('hide')
         document.getElementById('link2').classList.add('active')
-        displayCountries(select1.value,select2.value)
+        displayCountriesArea(select1.value,select2.value)
     }
     else if(tab==='population'){
+        removeNode(container)
+        removeNode(displayArea)
         container.classList.remove('hide')
         displayArea.classList.add('hide')
+        document.getElementById('populationHolder').classList.remove('hide')
+        document.getElementById('areaHolder').classList.add('hide')
         document.getElementById('link1').classList.add('active')
-        displayCountries(select1.value,select2.value)
+        displayCountriesPopulation(select1.value,select2.value)
     }
     else
         return false
 }
 
+const removeNode=(parentNode)=>{
+    while(parentNode.hasChildNodes())
+    {
+        parentNode.removeChild(parentNode.firstChild);
+    }
+    return false
+}
 
-let count = 0
-const countriesAPI = 'https://restcountries.com/v2/all'
-const displayCountries = (TB,num)=>{
-    fetch(countriesAPI)
-.then(response=>response.json())
-.then(data=>{
+
+
+// displaying Population List
+
+
+const displayCountriesPopulation = (TB,num)=>{
+    let count = 0
     console.log(TB,num)
     let sortedList
-    if(TB==='Top')
+    fetch('https://restcountries.com/v2/all')
+    .then(response=>response.json())
+    .then(data=>{
+        if(TB==='Top')
     {
         sortedList = data.sort((a,b)=>b.population-a.population)
     }
@@ -44,29 +64,29 @@ const displayCountries = (TB,num)=>{
     {
         sortedList = data.sort((a,b)=>a.population-b.population)
     }
+
     let top10
     switch(num)
     {
-        case 10:
+        case '10':
             top10 = sortedList.slice(0,10)
             break
-        case 20:
+        case '20':
             top10 = sortedList.slice(0,20)
             break
-        case 30:
+        case '30':
             top10 = sortedList.slice(0,30)
             break
             
-        case 40:
+        case '40':
             top10 = sortedList.slice(0,40)
             break
-        case 50:
+        case '50':
             top10 = sortedList.slice(0,50)
             break
         default:
             top10 = sortedList.slice(0,10)
             break
-
     }
 
     for(country of top10)
@@ -116,9 +136,21 @@ const displayCountries = (TB,num)=>{
             
     }
 
-    count2 =0
+
+    })
+    .catch(err=>alert(err))
+
+}
+
+// Displaying Countries Area
+
+const displayCountriesArea=(TB,num)=>{
+    count =0
     let sortedAreas
-    if(TB==='Top')
+    fetch('https://restcountries.com/v2/all')
+    .then(response=>response.json())
+    .then(data=>{
+        if(TB==='Top')
     {
         sortedAreas = data.sort((a,b)=>b.area-a.area)
     }
@@ -128,24 +160,24 @@ const displayCountries = (TB,num)=>{
     }
     switch(num)
     {
-        case 10:
+        case '10':
             top10Area = sortedAreas.slice(0,10)
             break
-        case 20:
+        case '20':
             top10Area = sortedAreas.slice(0,20)
             break
-        case 30:
+        case '30':
             top10Area = sortedAreas.slice(0,30)
             break
             
-        case 40:
+        case '40':
             top10Area = sortedAreas.slice(0,40)
             break
-        case 50:
+        case '50':
             top10Area = sortedAreas.slice(0,50)
             break
         default:
-            top10Area = sortedAreas.slice(0,10)
+            alert('Nothing to Display')
             break
 
     }
@@ -180,10 +212,10 @@ const displayCountries = (TB,num)=>{
         const value = document.createElement('h4')
         value.style.fontSize = '14px'
         value.style.width = '20%'
-            count2++
+            count++
             value.textContent = element.area
             Name.textContent = element.name
-            sn.textContent = count2
+            sn.textContent = count
             displayArea.appendChild(content)
             content.appendChild(sn)
             content.appendChild(Name)
@@ -194,7 +226,10 @@ const displayCountries = (TB,num)=>{
             index.appendChild(indicater)
             content.appendChild(value)
     }
-})
-.catch(alert('Some error occured'))
+    })
+    
 }
-
+    
+    
+    
+    

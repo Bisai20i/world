@@ -53,9 +53,6 @@
             transform: scaleX(1.1);
             
         }
-        .hide{
-            display: none;
-        }
         .holder{
             display: flex;
             justify-content: center;
@@ -63,6 +60,10 @@
             padding: 3px;
             margin: 5px
         }
+        .hide{
+            display: none;
+        }
+        
     </style>
 </head>
 <body>
@@ -85,22 +86,23 @@
         </div>
         <hr>
     </header>
-
+    <div id="populationHolder" class="holder">
+        <span style="font-size: 15px ; font-weight: 600; width: 10%;">SN</span>
+        <p style="font-size: 15px ; font-weight: 600; width: 30%;">Name of Country</p>
+        <p style="font-size: 15px ; font-weight: 600; width: 40%;">Graph</p>
+        <span style="font-size: 15px ; font-weight: 600; width: 20%;">Population</span>
+    </div>
     <div id="container">
-        <div class="holder">
-            <span style="font-size: 15px ; font-weight: 600; width: 10%;">SN</span>
-            <p style="font-size: 15px ; font-weight: 600; width: 30%;">Name of Country</p>
-            <p style="font-size: 15px ; font-weight: 600; width: 40%;">Graph</p>
-            <span style="font-size: 15px ; font-weight: 600; width: 20%;">Population</span>
-        </div>
+        
+    </div>
+    <div id="areaHolder" class="holder hide">
+        <span style="font-size: 15px ; font-weight: 600; width: 10%;">SN</span>
+        <p style="font-size: 15px ; font-weight: 600; width: 30%;">Name of Country</p>
+        <p style="font-size: 15px ; font-weight: 600; width: 40%;">Graph</p>
+        <span style="font-size: 15px ; font-weight: 600; width: 20%;">Area (SQ.KM)</span>
     </div>
     <div id="displayArea" class="hide">
-        <div class="holder">
-            <span style="font-size: 15px ; font-weight: 600; width: 10%;">SN</span>
-            <p style="font-size: 15px ; font-weight: 600; width: 30%;">Name of Country</p>
-            <p style="font-size: 15px ; font-weight: 600; width: 40%;">Graph</p>
-            <span style="font-size: 15px ; font-weight: 600; width: 20%;">Area</span>
-        </div>
+        
     </div>
     </center>
 
