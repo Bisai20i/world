@@ -6,6 +6,10 @@ let select2 = document.getElementById('select2')
 let links= document.querySelectorAll('h3')
 const container = document.querySelector('#container')
 const displayArea = document.querySelector('#displayArea')
+const loadingScreen = document.querySelector(".loadingScreen")
+
+
+  
 const openTab=(tab)=>{
     for(link of links)
     {
@@ -50,6 +54,10 @@ const removeNode=(parentNode)=>{
 
 
 const displayCountriesPopulation = (TB,num)=>{
+
+    loadingScreen.style.display = 'flex'
+    
+
     let count = 0
     console.log(TB,num)
     let sortedList
@@ -134,17 +142,21 @@ const displayCountriesPopulation = (TB,num)=>{
             index.appendChild(indicater)
             content.appendChild(value)
             
-    }
-
+    }   
+        loadingScreen.style.display = "none"
 
     })
     .catch(err=>alert(err))
 
+    
 }
 
 // Displaying Countries Area
 
 const displayCountriesArea=(TB,num)=>{
+
+
+    loadingScreen.style.display = 'flex'
     count =0
     let sortedAreas
     fetch('https://restcountries.com/v2/all')
@@ -226,10 +238,14 @@ const displayCountriesArea=(TB,num)=>{
             index.appendChild(indicater)
             content.appendChild(value)
     }
+    loadingScreen.style.display = "none";
     })
-    
 }
     
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadingScreen.style.display = "none";
+  });
     
     
     
